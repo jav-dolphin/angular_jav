@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-currency-header',
@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./currency-header.component.css']
 })
 export class CurrencyHeaderComponent {
-
+  @Input() currency: any
+  show: boolean = false
+  
+  name = "Andrii"
+  
+  ngAfterViewInit(){
+    if (this.currency){
+      this.show = true  
+    }
+  }
 }
+
+

@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CurrencyHeaderComponent } from './currency-header/currency-header.component';
 import { CurrencyFormComponent } from './currency-form/currency-form.component';
+import { CurrencyViewPipe } from './currency-view.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CurrencyHeaderComponent,
-    CurrencyFormComponent
+    CurrencyFormComponent,
+    CurrencyViewPipe
   ],
   imports: [
     BrowserModule,

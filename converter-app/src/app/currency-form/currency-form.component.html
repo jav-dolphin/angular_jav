@@ -1,1 +1,29 @@
-<p>currency-form works!</p>
+<!-- <p>{{birthday | date:"MM/dd/yyyy" }}</p> -->
+<div>
+<p *ngFor="let i of currency">{{i | currencyView:'compair':'em'}}</p>
+<!-- <p *ngFor="let i of currency">{{i.cc}} : {{i.rate}}</p> -->
+</div>
+
+<ng-template #currency_from>
+    <form class="currency_from" [formGroup]="currency_control_from">
+        <h2>Convert from</h2>
+      
+        <mat-form-field appearance="fill">
+          <mat-label>Amount</mat-label>
+          <span matTextPrefix>{{currency_data_from.mark}}</span>
+          <input matInput formControlName="input" (input)="currency_input($event)" (focusout)=currency_input($event)>
+          <mat-error *ngIf='this.currency_control_from.get("input")!.status == "INVALID"'>Invalid amount number (accesable only: numbers, and dot). Example: 12000.35</mat-error>
+        </mat-form-field>
+      
+        <mat-form-field appearance="fill">
+          <mat-label>Currency</mat-label>
+          <mat-select formControlName="select" (selectionChange)="currency_change($event)">
+            <mat-option value="usd">USD</mat-option>
+            <mat-option value="eur">EUR</mat-option>
+            <mat-option value="uah">UAH</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+    </ng-template>
+    <ng-container *[ngTemplateOutlet]="currency_from"></ng-container>
+    <ng-container *[ngTemplateOutlet]="currency_from"></ng-container>

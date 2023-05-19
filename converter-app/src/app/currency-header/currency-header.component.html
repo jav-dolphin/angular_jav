@@ -1,1 +1,21 @@
-<p>currency-header works!</p>
+
+<div *ngIf="currency.length > 1 else one_currency" [ngStyle]="{'text-align': 'center', 'height': '200px', 'overflow': 'auto', 'font-weight':'bold'}">
+<p *ngFor="let i of currency">Currency {{i | currencyView:'normal': 'bold'}} </p>
+</div>
+
+
+<ng-template #one_currency>
+    <ng-container *ngIf="currency.length==1 else zero_currency">
+    <p>Sadly, it's only one currency: {{currency[0].cc}}: {{currency[0].rate}}</p>
+    </ng-container>
+</ng-template>
+
+<ng-template #zero_currency>
+    <p>Sadly, there are no currency</p>
+</ng-template>
+
+<!-- <ng-container *[ngTemplateOutlet]="exemple"></ng-container> -->
+
+<ng-template #example let-name="name">
+    <p>{{ name }}</p>
+</ng-template>
